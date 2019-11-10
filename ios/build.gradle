@@ -1,0 +1,20 @@
+sourceSets.main.java.srcDirs = [ "src/" ]
+
+sourceCompatibility = '1.7'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+ext {
+	mainClassName = "com.example.hellolibgdx.IOSLauncher"
+}
+
+launchIPhoneSimulator.dependsOn build
+launchIPadSimulator.dependsOn build
+launchIOSDevice.dependsOn build
+createIPA.dependsOn build
+
+robovm {
+	iosSignIdentity = "iPhone Distribution: YOHEI OKAYA (38A7ZBRVUJ)"
+	iosProvisioningProfile = "libGDX sample"
+	iosSkipSigning = false
+	archs = "thumbv7:arm64"
+}
